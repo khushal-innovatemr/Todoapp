@@ -1,0 +1,92 @@
+
+<div>
+  <div class="text-3xl font-semibold max-w-sm mx-auto bg-blue-50 text-center p-3 rounded-md mt-2 
+   hover:bg-blue-500 hover:text-white transition duration-500 ease-in-out my-5">
+      Todo List
+  </div>
+
+  <app-todo-add (todoAdd)="addTask($event)"></app-todo-add>
+
+  <div class="max-w-blackmd:max-w-xl lg:max-w-3xl flex flex-col md:flex-row mx-auto">
+      <div class="flex flex-col my-3 p-2 m-2 mb-1 rounded-md text-white font-semibold md:w-2/4 lg:w-2/4">
+          <p class="font-semibold text-xl text-black">Todo</p>
+
+          <ul class="flex flex-col rounded-md">
+              @for (task of tasks; track task.id) {
+                  @if (task.completed === false) {
+                      <div>
+                          @if (edit === true && editTask.id === task.id) {
+                              <div class="flex flex-col">
+                                  <input autofocus type="text" class="p-2 rounded-md font-semibold bg-blue-300"
+                                      [(ngModel)]="editTask.name" />
+                                  <textarea rows="3" cols="10" class="p-2 rounded-md font-semibold my-2 bg-blue-300"
+                                      [(ngModel)]="editTask.description"></textarea>
+                                  <p class="font-semibold text-black mt-1">Deadline</p>
+                                  <input type="date" class="p-2 rounded-md font-semibold bg-blue-300 my-2"  
+                                      [(ngModel)]="editTask.deadline" />
+                                  <button (click)="handleUpdate(task)" class="bg-green-500 hover:bg-green-700 p-1 rounded-md text-white font-semibold">
+                                      Update
+                                  </button>
+                              </div>
+                          } @else {
+                              <div class="p-2 m-2 mb-1 bg-blue-100 rounded-md">
+                                  <p class="font-semibold text-black mt-1">Name</p>
+                                  <p class="bg-blue-300 px-3 py-3 rounded-md shadow overflow-auto text-black">{{ task.name }}</p>
+                                  <p class="font-semibold text-black mt-1">Description</p>
+                                  <p class="bg-blue-300 px-3 py-2 rounded-md shadow overflow-auto text-black">{{ task.description }}</p>
+                                  <p class="font-semibold text-black mt-1">Assigned On:</p>
+                                  <p class="bg-blue-300 px-3 py-2 rounded-md shadow overflow-auto text-black">{{ task.createdAt }}</p>
+                                  <p class="font-semibold text-black mt-1">Deadline</p>
+                                  <p class="bg-blue-300 px-3 py-2 rounded-md shadow overflow-auto text-black        ">{{ task.deadline }}</p>
+                                 
+                                  <hr class="mb-2" />
+                                  <div class="flex flex-row justify-between bg-blue-500 p-2 rounded-md">
+                                      <span>
+                                          <button (click)="handleEdit(task)" class="mr-2 bg-blue-500 hover:bg-blue-700 p-2 rounded-md text-white font-semibold">
+                                              Edit
+                                          </button>
+                                          <button (click)="handleDelete(task)" class="bg-red-500 hover:bg-red-700 p-2 rounded-md text-white font-semibold">
+                                              Delete
+                                          </button>
+                                      </span>
+                                      <button (click)="handleComplete(task)" class="ml-2 bg-green-500 hover:bg-green-700 p-2 rounded-md text-white font-semibold">
+                                          Completed
+                                      </button>
+                                  </div>
+                              </div>
+                          }
+                      </div>
+                  }
+              }
+          </ul>
+      </div>
+
+      <div class="flex flex-col my-3 p-2 m-2 mb-1 rounded-md font-semibold md:w-2/4 lg:w-2/4 text-black">
+          <p class="font-semibold text-xl">Completed</p>
+          <ul class="flex flex-col">
+              @for (task of tasks; track task.id) {
+                  @if (task.completed === true) {
+                      <div class="my-3 bg-green-200 p-2 rounded-md">
+                          <p class="font-semibold text-black overflow-auto mt-1">Name</p>
+                          <p class="bg-green-300 px-3 py-2 rounded-md shadow overflow-auto">{{ task.name }}</p>
+                          <p class="font-semibold text-black mt-1">Description</p>
+                          <p class="bg-green-300 px-3 py-2 rounded-md shadow overflow-auto">{{ task.description }}</p>
+                          <p class="font-semibold text-black mt-1">Assigned On</p>
+                          <p class="bg-green-300 px-3 py-2 rounded-md shadow overflow-auto">{{ task.createdAt }}</p>
+                          <p class="font-semibold text-black mt-1">Deadline</p>
+                          <p class="bg-green-300 px-3 py-2 rounded-md shadow overflow-auto">{{ task.deadline }}</p>
+                          <hr class="mb-2" />
+                          <div class="flex flex-row justify-between bg-green-400 p-2 rounded-md">
+                              <span>
+                                  <button (click)="handleDelete(task)" class="bg-red-500 hover:bg-red-700 p-2 rounded-md text-white font-semibold">
+                                      Delete
+                                  </button>
+                              </span>
+                          </div>
+                      </div>
+                }
+              }
+          </ul>
+      </div>
+  </div>
+</div>
