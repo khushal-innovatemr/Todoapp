@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 export class TodoService {
   readonly Root;
   constructor(private http :HttpClient) {
-    this.Root = 'https://todoapp-3oh4.onrender.com'
+    this.Root = 'https://todoapp-3oh4.onrender.com/'
    }
 
   get(uri:string){
