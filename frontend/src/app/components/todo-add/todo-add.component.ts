@@ -40,8 +40,6 @@ export class TodoAddComponent implements OnInit {
   }
 
   handleSubmit(){
-    console.log(this,name);
-    console.log(this.description);
 
     this.todoAdd.emit({
       name:this.name,

@@ -27,7 +27,6 @@ export class AppComponent implements OnInit{
     this.todo.get('tasks').subscribe({
       next: (res: any) => {
         this.tasks = res;
-        console.log(this.tasks);
       },
       error: (error: any) => {
         console.error('Error Fetching Tasks', error);
