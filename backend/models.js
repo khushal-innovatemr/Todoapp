@@ -4,8 +4,8 @@ const TaskSchema = new mongoose.Schema({
     id: { type: Number,unique:true},
     name:{type:String, default:"Task 1"},
     description:{type:String, default:"Sample Description"},
-    createdAt:{type:String, default:new Date().toDateString()},
-    deadline:{type:String, default:new Date().toDateString()},
+    createdAt:{type:String, default:new Date().toLocaleDateString("en-US", options)},
+    deadline:{type:String, default:new Date().toLocaleDateString("en-US", options)},
     completed:{type:Boolean, default:"false"},
 } )
 
