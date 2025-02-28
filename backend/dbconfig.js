@@ -1,6 +1,9 @@
 const mongoose  =require('mongoose');
+import dotenv from 'dotenv';
 
-const db = mongoose.connect('mongodb+srv://admin:admin@cluster0.uduq8.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
+dotenv.config();
+
+const db = mongoose.connect(process.env.MONGO_DB_URI,{
 }).then(() => {
 console.log('Connected to MongoDB');
 }).catch(err => { 
