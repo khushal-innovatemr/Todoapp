@@ -8,6 +8,7 @@ db;
 router.get('/', async (req, res) => {
     try {
         const tasks = await Todo.find();
+        res.json(tasks);
         res.send(tasks);
     } catch (err) {
         console.error("Error while Getting Tasks:", err);
