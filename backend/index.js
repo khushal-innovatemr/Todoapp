@@ -30,7 +30,7 @@ app.use(function (req, res, next) {
 });
 
 
-app.use('/tasks', router);
+app.use('/', router);
 
 app.on('error', (err) => {
     console.error(`Error during startup: ${err.message}`);
