@@ -7,7 +7,7 @@ const cookieParser = require('cookie-parser');
 const app = express();
 const PORT = process.env.PORT||3001
 
-app.use(cors({origin:'*',credentials:true}));  
+app.use(cors({origin:'https://frontend-delta-six-99.vercel.app/',credentials:true}));  
 app.use(bodyParser.json());
 app.use(cookieParser());
 
