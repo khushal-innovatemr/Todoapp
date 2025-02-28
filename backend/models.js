@@ -5,7 +5,7 @@ const TaskSchema = new mongoose.Schema({
     name:{type:String, default:"Task 1"},
     description:{type:String, default:"Sample Description"},
     createdAt:{type:String, default:new Date().toLocaleDateString("en-US", options)},
-    deadline:{type:String, default:new Date().toLocaleDateString("en-US", options)},
+    deadline:{type:String, default:new Date(now.getTime() + 24 * 60 * 60 * 1000).toLocaleDateString("en-US", options)},
     completed:{type:Boolean, default:"false"},
 } )
 
