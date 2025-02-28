@@ -2,7 +2,6 @@ const express = require('express');
 const Todo = require('../models'); 
 const db = require('../dbconfig');
 const router = express.Router();
-const verify = require('../middleware/authentication')
 
 db;
 

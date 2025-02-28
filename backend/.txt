@@ -1,3 +1,29 @@
+const jwt  = require('jsonwebtoken');
+
+const verify = (req,res,next) => {
+const token = req.cookies.token;
+
+if(!token){
+    return res.status(403).json({
+        error:"Unauthorized User Please Log In"
+    })
+}
+
+jwt.verify(token,process.env.JWT_SECRET,(err,user) => {
+    if(err) return res.status(403).json({
+        error:'Invalid Token'
+    })
+        
+        req.user= user;
+        next();
+});
+}
+module.exports = verify;
+
+
+middleware/auth.js
+
+
 const express = require('express');
 const bcrypt  =require('bcrypt');
 const jwt = require('jwt')
@@ -54,3 +80,4 @@ router.post('/logout',async(req,res) => {
 })
 
 module.exports = router;
+authrouyes

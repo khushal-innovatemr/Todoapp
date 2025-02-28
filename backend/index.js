@@ -1,7 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const router = require('./controllers/routers');
-const authRoute = require('./controllers/authroutes')
 const cors = require('cors');
 const cookieParser = require('cookie-parser'); 
 
@@ -31,7 +30,6 @@ app.use(function (req, res, next) {
 });
 
 
-app.use('/auth',authRoute)
 app.use('/tasks', router);
 
 app.on('error', (err) => {
