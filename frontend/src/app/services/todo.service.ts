@@ -14,17 +14,16 @@ export class TodoService {
     return this.http.get(this.Root+uri);
   } 
 
-  post(uri:string,payload:object){
-    return this.http.post(this.Root+uri,payload)
+  post(uri: string, payload: object) {
+    return this.http.post(this.Root + uri, payload, { withCredentials: true });
   }
-
-  delete(uri:string,payload:object){
-    console.log(uri);
-    console.log(this.Root+uri);
-    return this.http.delete(this.Root+uri,payload)
+  
+  delete(uri: string, payload: object) {
+    return this.http.delete(this.Root + uri, { body: payload, withCredentials: true });
   }
-
-  put(uri:string,payload:object){
-    return this.http.put(this.Root+uri,payload)
+  
+  put(uri: string, payload: object) {
+    return this.http.put(this.Root + uri, payload, { withCredentials: true });
   }
+  
 }
