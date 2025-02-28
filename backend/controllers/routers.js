@@ -35,7 +35,7 @@ router.post('/', async (req, res) => {
             createdAt: createdAt ? new Date(createdAt).toDateString()
                                 : new Date().toLocaleDateString("en-US", options), 
             deadline: deadline ? new Date(deadline).toDateString()
-                                : new Date(now.getTime() + 24 * 60 * 60 * 1000).toLocaleDateString("en-US", options), 
+                                : new Date().toLocaleDateString("en-US", options), 
             completed 
         });
     
